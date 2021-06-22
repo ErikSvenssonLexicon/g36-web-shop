@@ -10,7 +10,6 @@ import java.util.Set;
 
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
 @ToString(exclude = "categories")
 @EqualsAndHashCode(exclude = {"productId", "categories"})
@@ -25,6 +24,14 @@ public class Product {
     private String productName;
     private String description;
     private BigDecimal productPrice;
+
+    public Product(String productId, String productName, String description, BigDecimal productPrice, Set<ProductCategory> categories) {
+        setProductId(productId);
+        setProductName(productName);
+        setDescription(description);
+        setProductPrice(productPrice);
+        setCategories(categories);
+    }
 
     @ManyToMany(
             cascade = {CascadeType.DETACH, CascadeType.REFRESH, CascadeType.PERSIST},
@@ -44,15 +51,20 @@ public class Product {
 
     public void setCategories(Set<ProductCategory> categories) {
         if(categories == null) categories = new HashSet<>();
+        categories.remove(null);
         if(categories.isEmpty()){
             if(this.categories != null){
                 for(ProductCategory category : this.categories){
-                    category.getProductsWithCategory().remove(this);
+                    if(category != null){
+                        category.getProductsWithCategory().remove(this);
+                    }
                 }
             }
         }else {
             for(ProductCategory category : categories){
-                category.getProductsWithCategory().add(this);
+                if(category != null){
+                    category.getProductsWithCategory().add(this);
+                }
             }
         }
         this.categories = categories;
