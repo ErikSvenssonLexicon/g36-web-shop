@@ -51,7 +51,7 @@ public class Product {
 
     public void setCategories(Set<ProductCategory> categories) {
         if(categories == null) categories = new HashSet<>();
-        categories.remove(null);
+        categories.remove(null); //Since a HashSet can contain ONE null i am removing null
         if(categories.isEmpty()){
             if(this.categories != null){
                 for(ProductCategory category : this.categories){
