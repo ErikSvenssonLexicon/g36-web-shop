@@ -1,4 +1,4 @@
-package se.lexicon.g36webshop.model;
+package se.lexicon.g36webshop.model.entity;
 
 import lombok.*;
 import org.hibernate.annotations.GenericGenerator;

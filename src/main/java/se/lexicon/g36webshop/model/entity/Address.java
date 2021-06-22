@@ -1,27 +1,28 @@
-package se.lexicon.g36webshop.model;
+package se.lexicon.g36webshop.model.entity;
+
 
 import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Getter
 @Setter
-@NoArgsConstructor
 @AllArgsConstructor
-@ToString(exclude = "password")
-@EqualsAndHashCode(exclude = {"password", "userId"})
+@NoArgsConstructor
+@EqualsAndHashCode(exclude = {"addressId"})
+@ToString
 @Entity
-public class AppUser {
+public class Address {
     @Id
     @GeneratedValue(generator = "UUID")
     @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
-    @Column(updatable = false)
-    private String userId;
-    @Column(unique = true)
-    private String username;
-    private String password;
+    private String addressId;
+    private String street;
+    private String zipCode;
+    private String city;
+    private String country;
+
 }
