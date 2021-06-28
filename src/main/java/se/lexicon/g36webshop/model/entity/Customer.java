@@ -20,6 +20,7 @@ public class Customer {
     private String customerId;
     private String firstName;
     private String lastName;
+    @Column(unique = true)
     private String email;
     @OneToOne(
             cascade = CascadeType.ALL,
