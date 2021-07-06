@@ -34,7 +34,7 @@ public class ObjectSeeder {
     public List<Order> orders(){
         return Arrays.asList(
                 new Order(null, null, null, OrderStatus.PENDING, null, null),
-                new Order(null, null, null, OrderStatus.PROCESSED, null, null)
+                new Order(null, null, null, OrderStatus.PENDING, null, null)
         );
     }
 

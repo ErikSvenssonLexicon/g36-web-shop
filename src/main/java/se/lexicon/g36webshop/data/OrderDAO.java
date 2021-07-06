@@ -4,6 +4,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import se.lexicon.g36webshop.model.entity.Order;
+import se.lexicon.g36webshop.model.misc.OrderStatus;
 
 import java.util.List;
 
@@ -12,4 +13,7 @@ public interface OrderDAO extends JpaRepository<Order, String> {
 
     @Query("SELECT o FROM Order o JOIN FETCH o.orderContent AS item WHERE UPPER(item.product.productName) = UPPER(:name)")
     List<Order> findByProductName(@Param("name") String name);
+
+    List<Order> findByOrderStatus(OrderStatus orderStatus);
+
 }

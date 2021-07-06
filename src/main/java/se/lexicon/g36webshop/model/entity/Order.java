@@ -7,6 +7,7 @@ import se.lexicon.g36webshop.model.misc.OrderStatus;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -100,7 +101,7 @@ public class Order {
         setPriceTotal(
                 orderContent.stream()
                     .map(OrderItem::getItemPrice)
-                    .reduce(BigDecimal.ZERO, BigDecimal::add)
+                    .reduce(BigDecimal.ZERO, BigDecimal::add).setScale(2, RoundingMode.HALF_EVEN)
         );
     }
 
