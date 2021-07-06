@@ -78,4 +78,16 @@ public class ProductServiceImpl implements ProductService {
         product.setCategories(null);
         productDAO.delete(product);
     }
+
+    @Override
+    @Transactional(readOnly = true)
+    public Collection<Product> findByProductCategoryValue(String value) {
+        return productDAO.findByCategoriesValueIgnoreCase(value);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public Collection<Product> findByProductNameContains(String productName) {
+        return productDAO.findByProductNameContains(productName);
+    }
 }

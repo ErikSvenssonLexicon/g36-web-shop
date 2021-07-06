@@ -172,4 +172,24 @@ public class ProductServiceImplTest {
         Product product = em.find(Product.class, id);
         assertNull(product);
     }
+
+    @Test
+    void findByProductCategoryValue() {
+        String value = "category1";
+        int expectedSize = 2;
+
+        Collection<Product> result = testObject.findByProductCategoryValue(value);
+
+        assertEquals(expectedSize, result.size());
+    }
+
+    @Test
+    void findByProductNameContains() {
+        String productName = "pro";
+        int expectedSize = 5;
+
+        Collection<Product> result = testObject.findByProductNameContains(productName);
+
+        assertEquals(expectedSize, result.size());
+    }
 }
