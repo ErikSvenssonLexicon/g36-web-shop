@@ -5,9 +5,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import se.lexicon.g36webshop.data.ProductDAO;
 import se.lexicon.g36webshop.exception.AppResourceNotFoundException;
-import se.lexicon.g36webshop.model.dto.ProductDTO;
+import se.lexicon.g36webshop.model.dto.product.ProductDTO;
 import se.lexicon.g36webshop.model.entity.Product;
-import se.lexicon.g36webshop.service.interfaces.ProductFactory;
+import se.lexicon.g36webshop.service.interfaces.conversion.ProductFactory;
 import se.lexicon.g36webshop.service.interfaces.ProductService;
 
 import java.util.Collection;
@@ -74,6 +74,8 @@ public class ProductServiceImpl implements ProductService {
     @Override
     @Transactional(rollbackFor = RuntimeException.class)
     public void delete(String id) {
-        productDAO.deleteById(id);
+        Product product = findById(id);
+        product.setCategories(null);
+        productDAO.delete(product);
     }
 }

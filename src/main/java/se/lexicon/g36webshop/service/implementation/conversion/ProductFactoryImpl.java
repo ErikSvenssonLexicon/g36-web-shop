@@ -1,9 +1,9 @@
-package se.lexicon.g36webshop.service.implementation;
+package se.lexicon.g36webshop.service.implementation.conversion;
 
 import org.springframework.stereotype.Service;
-import se.lexicon.g36webshop.model.dto.ProductDTO;
+import se.lexicon.g36webshop.model.dto.product.ProductDTO;
 import se.lexicon.g36webshop.model.entity.Product;
-import se.lexicon.g36webshop.service.interfaces.ProductFactory;
+import se.lexicon.g36webshop.service.interfaces.conversion.ProductFactory;
 
 @Service
 public class ProductFactoryImpl implements ProductFactory {

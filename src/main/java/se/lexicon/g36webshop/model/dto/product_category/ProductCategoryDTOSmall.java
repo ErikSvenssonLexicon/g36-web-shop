@@ -1,4 +1,4 @@
-package se.lexicon.g36webshop.model.dto;
+package se.lexicon.g36webshop.model.dto.product_category;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

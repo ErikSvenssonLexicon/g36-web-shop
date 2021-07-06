@@ -1,21 +1,17 @@
-package se.lexicon.g36webshop.model.dto;
+package se.lexicon.g36webshop.model.dto.product;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.math.BigDecimal;
-import java.util.List;
 
 @Getter
 @Setter
 @NoArgsConstructor
-public class ProductDTO {
-
+public class ProductDTOSmall {
     private String productId;
     private String productName;
     private String description;
     private BigDecimal productPrice;
-    private List<ProductCategoryDTOSmall> categories;
-
 }

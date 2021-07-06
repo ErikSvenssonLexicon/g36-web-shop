@@ -12,7 +12,7 @@ import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.transaction.annotation.Transactional;
 import se.lexicon.g36webshop.TestObjectSeeder;
 import se.lexicon.g36webshop.exception.AppResourceNotFoundException;
-import se.lexicon.g36webshop.model.dto.ProductDTO;
+import se.lexicon.g36webshop.model.dto.product.ProductDTO;
 import se.lexicon.g36webshop.model.entity.Product;
 import se.lexicon.g36webshop.model.entity.ProductCategory;
 
