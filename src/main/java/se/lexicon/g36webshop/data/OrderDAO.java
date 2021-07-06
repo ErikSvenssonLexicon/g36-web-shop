@@ -9,7 +9,6 @@ import java.util.List;
 
 public interface OrderDAO extends JpaRepository<Order, String> {
     List<Order> findByCustomerCustomerId(String customerId);
-    List<Order> findByOrderContentProductProductNameIgnoreCase(String productName);
 
     @Query("SELECT o FROM Order o JOIN FETCH o.orderContent AS item WHERE UPPER(item.product.productName) = UPPER(:name)")
     List<Order> findByProductName(@Param("name") String name);

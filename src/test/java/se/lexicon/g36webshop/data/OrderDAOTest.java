@@ -55,8 +55,6 @@ class OrderDAOTest {
 
         ordersInContext = testObject.saveAll(orders);
 
-        em.flush();
-
     }
 
     @Test
@@ -71,11 +69,6 @@ class OrderDAOTest {
 
         List<Order> result = testObject.findByCustomerCustomerId(customerId);
         assertEquals(expectedSize, result.size());
-
-    }
-
-    @Test
-    void findByOrderContentProductProductNameIgnoreCase() {
 
     }
 

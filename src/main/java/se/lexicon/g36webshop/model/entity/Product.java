@@ -34,7 +34,7 @@ public class Product {
     }
 
     @ManyToMany(
-            cascade = {CascadeType.DETACH, CascadeType.REFRESH, CascadeType.PERSIST},
+            cascade = {CascadeType.DETACH, CascadeType.REFRESH, CascadeType.PERSIST, CascadeType.MERGE},
             fetch = FetchType.LAZY
     )
     @JoinTable(
