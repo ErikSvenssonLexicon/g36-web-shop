@@ -11,6 +11,7 @@ public class ProductFactoryImpl implements ProductFactory {
     public Product createFromDTO(ProductDTO productDTO) {
         if(productDTO == null) throw new IllegalArgumentException("Create aborted, cause: productDTO was null");
         Product newProduct = new Product();
+        newProduct.setProductId(productDTO.getProductId());
         newProduct.setProductName(productDTO.getProductName().trim());
         newProduct.setProductPrice(productDTO.getProductPrice());
         newProduct.setDescription(productDTO.getDescription().trim());

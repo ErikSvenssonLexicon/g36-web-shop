@@ -13,6 +13,7 @@ public class ProductCategoryFactoryImpl implements ProductCategoryFactory {
        if(productCategoryDTO == null) throw new IllegalArgumentException("ProductCategoryDTO productCategoryDTO was null");
 
        ProductCategory productCategory = new ProductCategory();
+       productCategory.setCategoryId(productCategoryDTO.getCategoryId());
        productCategory.setValue(productCategoryDTO.getValue().trim());
        return productCategory;
     }

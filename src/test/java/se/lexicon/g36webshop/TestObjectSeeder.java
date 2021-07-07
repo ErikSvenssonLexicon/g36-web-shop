@@ -1,13 +1,15 @@
 package se.lexicon.g36webshop;
 
-import se.lexicon.g36webshop.model.entity.Product;
-import se.lexicon.g36webshop.model.entity.ProductCategory;
+import com.github.javafaker.Faker;
+import se.lexicon.g36webshop.model.entity.*;
 
 import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.List;
 
 public class TestObjectSeeder {
+
+    private Faker faker = Faker.instance();
 
     public List<Product> products(){
         return Arrays.asList(
@@ -25,6 +27,35 @@ public class TestObjectSeeder {
                 new ProductCategory(null, "Category1", null),
                 new ProductCategory(null, "Category2", null),
                 new ProductCategory(null, "Category3", null)
+        );
+    }
+
+    public List<Customer> customers(){
+        return Arrays.asList(
+                new Customer(null, faker.name().firstName(), faker.name().lastName(), faker.internet().emailAddress(), null, null),
+                new Customer(null, faker.name().firstName(), faker.name().lastName(), faker.internet().emailAddress(), null, null),
+                new Customer(null, faker.name().firstName(), faker.name().lastName(), faker.internet().emailAddress(), null, null),
+                new Customer(null, faker.name().firstName(), faker.name().lastName(), faker.internet().emailAddress(), null, null),
+                new Customer(null, faker.name().firstName(), faker.name().lastName(), faker.internet().emailAddress(), null, null)
+        );
+    }
+
+    public List<AppUser> appUsers(){
+        return Arrays.asList(
+                new AppUser(null, faker.name().username(), faker.internet().password()),
+                new AppUser(null, faker.name().username(), faker.internet().password()),
+                new AppUser(null, faker.name().username(), faker.internet().password()),
+                new AppUser(null, faker.name().username(), faker.internet().password()),
+                new AppUser(null, faker.name().username(), faker.internet().password())
+        );
+    }
+
+    public List<Address> addresses(){
+        return Arrays.asList(
+                new Address(null, faker.address().streetAddress()+" "+faker.address().buildingNumber(), "35002", "Växjö", "Sweden"),
+                new Address(null, faker.address().streetAddress()+" "+faker.address().buildingNumber(), "35999", "Växjö", "Sweden"),
+                new Address(null, faker.address().streetAddress()+" "+faker.address().buildingNumber(), "55001", "Jönköping", "Sweden"),
+                new Address(null, faker.address().streetAddress()+" "+faker.address().buildingNumber(), "55002", "Jönköping", "Sweden")
         );
     }
 
