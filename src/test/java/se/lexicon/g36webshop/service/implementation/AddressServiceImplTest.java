@@ -186,7 +186,4 @@ class AddressServiceImplTest {
         assertEquals(country, result.getCountry());
     }
 
-    @Test
-    void delete() {
-    }
 }
