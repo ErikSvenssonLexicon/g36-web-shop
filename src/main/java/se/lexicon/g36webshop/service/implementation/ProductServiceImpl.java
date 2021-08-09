@@ -7,6 +7,8 @@ import se.lexicon.g36webshop.data.ProductDAO;
 import se.lexicon.g36webshop.exception.AppResourceNotFoundException;
 import se.lexicon.g36webshop.model.dto.product.ProductDTO;
 import se.lexicon.g36webshop.model.entity.Product;
+import se.lexicon.g36webshop.model.entity.ProductCategory;
+import se.lexicon.g36webshop.service.interfaces.ProductCategoryService;
 import se.lexicon.g36webshop.service.interfaces.conversion.ProductFactory;
 import se.lexicon.g36webshop.service.interfaces.ProductService;
 
@@ -17,7 +19,9 @@ import java.util.Collection;
 public class ProductServiceImpl implements ProductService {
 
     private final ProductDAO productDAO;
+    private final ProductCategoryService productCategoryService;
     private final ProductFactory productFactory;
+
 
     @Override
     @Transactional(rollbackFor = RuntimeException.class)
@@ -90,4 +94,26 @@ public class ProductServiceImpl implements ProductService {
     public Collection<Product> findByProductNameContains(String productName) {
         return productDAO.findByProductNameContains(productName);
     }
+
+    @Override
+    @Transactional(rollbackFor = RuntimeException.class)
+    public Product addProductCategory(String productId, String categoryId) {
+        Product product = findById(productId);
+        ProductCategory productCategory = productCategoryService.findById(categoryId);
+        product.addProductCategory(productCategory);
+        product = productDAO.save(product);
+        return product;
+    }
+
+    @Override
+    @Transactional(rollbackFor = RuntimeException.class)
+    public Product removeProductCategory(String productId, String categoryId) {
+        Product product = findById(productId);
+        ProductCategory productCategory = productCategoryService.findById(categoryId);
+        product.removeProductCategory(productCategory);
+        product = productDAO.save(product);
+        return product;
+    }
+
+
 }

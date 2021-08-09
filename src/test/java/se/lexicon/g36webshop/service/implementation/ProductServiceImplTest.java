@@ -192,4 +192,31 @@ public class ProductServiceImplTest {
 
         assertEquals(expectedSize, result.size());
     }
+
+    @Test
+    @DisplayName("Given productId and categoryId removeProductCategory return expected Product")
+    void removeProductCategory_success() {
+        String productId = persistedProducts.get(0).getProductId();
+        String categoryId = persistedCategories.get(0).getCategoryId();
+
+        Product result = testObject.removeProductCategory(productId, categoryId);
+        em.flush();
+        assertNotNull(result);
+        assertEquals(1, result.getCategories().size());
+        assertFalse(result.getCategories().stream().anyMatch(productCategory -> productCategory.getCategoryId().equals(categoryId)));
+    }
+
+    @Test
+    @DisplayName("Given productId and categoryId addProductCategory return expected Product")
+    void addProductCategory_success() {
+        String productId = persistedProducts.get(1).getProductId();
+        String categoryId = persistedCategories.get(1).getCategoryId();
+        int expectedSize = 2;
+
+        Product result = testObject.addProductCategory(productId, categoryId);
+        em.flush();
+        assertNotNull(result);
+        assertEquals(expectedSize, result.getCategories().size());
+        assertTrue(result.getCategories().stream().anyMatch(productCategory -> productCategory.getCategoryId().equals(categoryId)));
+    }
 }
