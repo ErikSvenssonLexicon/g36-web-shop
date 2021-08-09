@@ -12,9 +12,9 @@ public class ProductFactoryImpl implements ProductFactory {
         if(productDTO == null) throw new IllegalArgumentException("Create aborted, cause: productDTO was null");
         Product newProduct = new Product();
         newProduct.setProductId(productDTO.getProductId());
-        newProduct.setProductName(productDTO.getProductName().trim());
+        newProduct.setProductName(productDTO.getProductName() == null ? null : productDTO.getProductName().trim());
         newProduct.setProductPrice(productDTO.getProductPrice());
-        newProduct.setDescription(productDTO.getDescription().trim());
+        newProduct.setDescription(productDTO.getDescription() == null ? null : productDTO.getDescription().trim());
         return newProduct;
     }
 }

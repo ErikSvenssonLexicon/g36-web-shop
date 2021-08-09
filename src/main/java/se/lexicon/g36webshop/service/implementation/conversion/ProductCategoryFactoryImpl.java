@@ -14,7 +14,7 @@ public class ProductCategoryFactoryImpl implements ProductCategoryFactory {
 
        ProductCategory productCategory = new ProductCategory();
        productCategory.setCategoryId(productCategoryDTO.getCategoryId());
-       productCategory.setValue(productCategoryDTO.getValue().trim());
+       productCategory.setValue(productCategoryDTO.getValue() == null ? null : productCategoryDTO.getValue().trim());
        return productCategory;
     }
 }

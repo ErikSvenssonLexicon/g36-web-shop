@@ -9,7 +9,7 @@ import java.util.List;
 
 public class TestObjectSeeder {
 
-    private Faker faker = Faker.instance();
+    private final Faker faker = Faker.instance();
 
     public List<Product> products(){
         return Arrays.asList(
